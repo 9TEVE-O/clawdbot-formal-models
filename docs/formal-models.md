@@ -7,7 +7,9 @@ The intent is practical: treat this as a **security regression suite**.
 - **Green models**: the intended design; TLC should find no invariant violation.
 - **Red models**: a deliberately buggy variant that should produce a **counterexample trace** (useful to demonstrate why a check matters, and to prevent regressions).
 
-## Relationship to Clawdbot
+## Relationship to Clawdbot / GitHub Copilot CLI
+
+These formal models verify the security properties of the agentic harness that powers both Clawdbot and the publicly released [GitHub Copilot CLI](https://github.com/github/copilot-cli).
 
 Clawdbot’s user-facing documentation links here. The corresponding Clawdbot docs page is:
 - `clawdbot/docs/security/formal-verification.md`
