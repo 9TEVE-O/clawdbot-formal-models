@@ -47,10 +47,11 @@ const toolNameAliases = evalObjectLiteral(aliasesSrc);
 // Historically: `group:clawdbot`.
 // Later: openclaw renamed this to `group:openclaw`.
 // Current in this repo: `group:moltbot`.
+// Public product: GitHub Copilot CLI uses `group:copilot-cli`.
 // Keep all present aliases identical to avoid churn in downstream specs/tests
 // and in cross-repo conformance checks.
 
-const groupAliases = ['group:clawdbot', 'group:openclaw', 'group:moltbot'];
+const groupAliases = ['group:clawdbot', 'group:openclaw', 'group:moltbot', 'group:copilot-cli'];
 
 // Find the first defined alias as the canonical source.
 const firstKey = groupAliases.find((k) => groups[k]);

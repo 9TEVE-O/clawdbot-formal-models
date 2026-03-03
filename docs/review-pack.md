@@ -3,7 +3,7 @@
 This document is intended to make it easy to independently verify that the
 TLA+ models in this repo are:
 - non-vacuous (they actually constrain something)
-- traceable to the OpenClaw implementation
+- traceable to the Clawdbot / GitHub Copilot CLI implementation
 - reproducible (green passes, negative fails for the right reasons)
 
 ## How to use this pack
@@ -60,9 +60,9 @@ The models are abstractions (not full-code verification).
 - What it checks:
   - deny-wins monotonicity
   - group expansion exactness (e.g. group:memory contains expected tools)
-- OpenClaw code:
-  - `openclaw/src/agents/tool-policy.ts`
-  - Conformance snapshot used for extraction: `openclaw/src/agents/tool-policy.conformance.ts`
+- Clawdbot code:
+  - `clawdbot/src/agents/tool-policy.ts`
+  - Conformance snapshot used for extraction: `clawdbot/src/agents/tool-policy.conformance.ts`
 
 ### Elevated gating (exec approvals / sensitive operations)
 - Models:
@@ -70,7 +70,7 @@ The models are abstractions (not full-code verification).
 - What it checks:
   - elevated mode requires correct gating combination (no “OR” bug)
 - Code:
-  - OpenClaw tool invocation + approvals pipeline (see nodes + approvals harnesses)
+  - Clawdbot tool invocation + approvals pipeline (see nodes + approvals harnesses)
 
 ### Nodes command policy + approvals pipeline
 - Models:
@@ -94,7 +94,7 @@ The models are abstractions (not full-code verification).
   - non-loopback bind requires auth
   - spoof protections for trusted proxy / tailnet
 - Code:
-  - `openclaw/src/gateway/auth.ts`
+  - `clawdbot/src/gateway/auth.ts`
 
 ### Pairing store invariants
 - Models:
@@ -105,7 +105,7 @@ The models are abstractions (not full-code verification).
 - What it checks:
   - expiry, max pending cap, idempotency, refresh races
 - Code:
-  - `openclaw/src/pairing/*`
+  - `clawdbot/src/pairing/*`
 
 ### Ingress gating + idempotency + trace
 - Models:
@@ -130,7 +130,7 @@ The models are abstractions (not full-code verification).
   - `tla/specs/RoutingIdentityLinksSymmetryHarness.tla` (+ `_BadAsymmetric`)
   - `tla/specs/RoutingIdentityLinksChannelOverrideHarness.tla` (+ `_BadIgnoresChannelDisable`)
 - Code:
-  - `openclaw/src/routing/*`
+  - `clawdbot/src/routing/*`
 
 ### NEW: routing thread parent binding inheritance
 - Models:
@@ -139,8 +139,8 @@ The models are abstractions (not full-code verification).
   - explicit thread binding beats parent binding
   - otherwise parent binding is inherited
 - Code:
-  - `openclaw/src/routing/resolve-route.ts` (matchedBy="binding.peer.parent")
-  - `openclaw/src/discord/monitor/message-handler.preflight.ts` (passes parentPeer)
+  - `clawdbot/src/routing/resolve-route.ts` (matchedBy="binding.peer.parent")
+  - `clawdbot/src/discord/monitor/message-handler.preflight.ts` (passes parentPeer)
 
 ### NEW: Discord PluralKit sender identity resolution
 - Models:
@@ -149,9 +149,9 @@ The models are abstractions (not full-code verification).
   - PluralKit resolution does not apply to webhook messages
   - allowlist is applied to the resolved sender kind
 - Code:
-  - `openclaw/src/discord/pluralkit.ts`
-  - `openclaw/src/discord/monitor/sender-identity.ts`
-  - `openclaw/src/discord/monitor/message-handler.preflight.ts`
+  - `clawdbot/src/discord/pluralkit.ts`
+  - `clawdbot/src/discord/monitor/sender-identity.ts`
+  - `clawdbot/src/discord/monitor/message-handler.preflight.ts`
 
 ---
 

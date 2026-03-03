@@ -8,6 +8,7 @@ const g = json.groups || {};
 const a = g['group:clawdbot'];
 const b = g['group:openclaw'];
 const c = g['group:moltbot'];
+const d = g['group:copilot-cli'];
 
 // Prefer comparing openclaw <-> clawdbot when both exist.
 if (a && b) {
@@ -23,6 +24,16 @@ if (a && b) {
   process.exit(0);
 }
 
+// If only copilot-cli exists, just ensure it is non-empty.
+if (d) {
+  if (!Array.isArray(d) || d.length === 0) {
+    console.error('Unexpected: group:copilot-cli is missing or empty');
+    process.exit(1);
+  }
+  console.log('OK: group:copilot-cli exists (no openclaw/clawdbot alias keys present).');
+  process.exit(0);
+}
+
 // If only moltbot exists (common in this repo), just ensure it is non-empty.
 if (c) {
   if (!Array.isArray(c) || c.length === 0) {
@@ -33,7 +44,7 @@ if (c) {
   process.exit(0);
 }
 
-console.error('Expected group:moltbot or group:clawdbot/openclaw in generated/tool-groups.json');
+console.error('Expected group:copilot-cli, group:moltbot, or group:clawdbot/openclaw in generated/tool-groups.json');
 console.error('Present keys:', Object.keys(g).sort().join(', '));
 process.exit(2);
 

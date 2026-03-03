@@ -1,6 +1,6 @@
 # clawdbot-formal-models
 
-Machine-checkable **security models** for Clawdbot, primarily in **TLA+** checked with **TLC**.
+Machine-checkable **security models** for Clawdbot / [GitHub Copilot CLI](https://github.com/github/copilot-cli), primarily in **TLA+** checked with **TLC**.
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18452871.svg)](https://doi.org/10.5281/zenodo.18452871)
 
@@ -63,3 +63,7 @@ Output:
 
 - Add CI to run TLC on PRs and upload counterexample traces as artifacts.
 - Deepen fidelity: pairing-store concurrency/locking, provider-specific ingress nuances, routing identity-link semantics.
+
+## Related
+
+- [GitHub Copilot CLI](https://github.com/github/copilot-cli) — the publicly released CLI product powered by the same agentic harness these models verify.
